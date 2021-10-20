@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Spawnerscript : MonoBehaviour
 {
-    public GameObject SpawnObject;
+    public GameObject SpawnObject1;
+    public GameObject SpawnObject2; 
+    public GameObject SpawnObject3;
     float PositionY;
+    int RNG;
 
     // Start is called before the first frame update
     void Start()
@@ -16,15 +19,24 @@ public class Spawnerscript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-
-
+        RNG = Random.Range(0, 3);
     }
 
     void SpawnObjects()
     {
         PositionY = Random.Range(4, -4f);
         this.transform.position = new Vector3(transform.position.x, PositionY, transform.position.z);
-        Instantiate(SpawnObject, transform.position, transform.rotation);
+        if (RNG == 0)
+        {
+            Instantiate(SpawnObject1, transform.position, transform.rotation);
+        }
+        if (RNG == 1)
+        {
+            Instantiate(SpawnObject2, transform.position, transform.rotation);
+        }
+        if (RNG == 2)
+        {
+            Instantiate(SpawnObject3, transform.position, transform.rotation);
+        }
     }
 }
